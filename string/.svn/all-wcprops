@@ -1,0 +1,227 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/courses/cs33001/svn/!svn/ver/2888/mgould/string
+END
+log_3_medium.txt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/courses/cs33001/svn/!svn/ver/3552/mgould/string/log_3_medium.txt
+END
+log_1_tiny.txt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/courses/cs33001/svn/!svn/ver/3552/mgould/string/log_1_tiny.txt
+END
+test_greater_than.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/courses/cs33001/svn/!svn/ver/3187/mgould/string/test_greater_than.cpp
+END
+logentry.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/courses/cs33001/svn/!svn/ver/3187/mgould/string/logentry.cpp
+END
+test_default_ctor.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/courses/cs33001/svn/!svn/ver/3552/mgould/string/test_default_ctor.cpp
+END
+test_reallocate.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/courses/cs33001/svn/!svn/ver/3552/mgould/string/test_reallocate.cpp
+END
+string.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/courses/cs33001/svn/!svn/ver/3552/mgould/string/string.h
+END
+test_find_char.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/courses/cs33001/svn/!svn/ver/2888/mgould/string/test_find_char.cpp
+END
+test_plus.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/courses/cs33001/svn/!svn/ver/2888/mgould/string/test_plus.cpp
+END
+test_assign.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/courses/cs33001/svn/!svn/ver/3552/mgould/string/test_assign.cpp
+END
+gmon.out
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/courses/cs33001/svn/!svn/ver/3552/mgould/string/gmon.out
+END
+test_not_equal.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/courses/cs33001/svn/!svn/ver/2888/mgould/string/test_not_equal.cpp
+END
+log_2_small.txt
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/courses/cs33001/svn/!svn/ver/3552/mgould/string/log_2_small.txt
+END
+test_greater_than_or_equal.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/courses/cs33001/svn/!svn/ver/2888/mgould/string/test_greater_than_or_equal.cpp
+END
+test_split.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/courses/cs33001/svn/!svn/ver/3552/mgould/string/test_split.cpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/courses/cs33001/svn/!svn/ver/3552/mgould/string/Makefile
+END
+test_input.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/courses/cs33001/svn/!svn/ver/2888/mgould/string/test_input.cpp
+END
+test_output.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/courses/cs33001/svn/!svn/ver/2888/mgould/string/test_output.cpp
+END
+test_c_str_ctor.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/courses/cs33001/svn/!svn/ver/1932/mgould/string/test_c_str_ctor.cpp
+END
+text1.txt
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/courses/cs33001/svn/!svn/ver/3552/mgould/string/text1.txt
+END
+test_find_t_n_n_blank.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/courses/cs33001/svn/!svn/ver/2804/mgould/string/test_find_t_n_n_blank.cpp
+END
+test_find_string.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/courses/cs33001/svn/!svn/ver/2888/mgould/string/test_find_string.cpp
+END
+test_equal.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/courses/cs33001/svn/!svn/ver/2888/mgould/string/test_equal.cpp
+END
+string.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/courses/cs33001/svn/!svn/ver/3552/mgould/string/string.cpp
+END
+test_less_than_or_equal.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/courses/cs33001/svn/!svn/ver/2888/mgould/string/test_less_than_or_equal.cpp
+END
+logentry.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/courses/cs33001/svn/!svn/ver/3187/mgould/string/logentry.h
+END
+test_swap.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/courses/cs33001/svn/!svn/ver/3552/mgould/string/test_swap.cpp
+END
+logview.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/courses/cs33001/svn/!svn/ver/3187/mgould/string/logview.cpp
+END
+test_subscript.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/courses/cs33001/svn/!svn/ver/2804/mgould/string/test_subscript.cpp
+END
+splits.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/courses/cs33001/svn/!svn/ver/3552/mgould/string/splits.cpp
+END
+test_sub_string.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/courses/cs33001/svn/!svn/ver/2888/mgould/string/test_sub_string.cpp
+END
+test_get.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/courses/cs33001/svn/!svn/ver/3552/mgould/string/test_get.cpp
+END
+test_less_than.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/courses/cs33001/svn/!svn/ver/3187/mgould/string/test_less_than.cpp
+END
+test_length.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/courses/cs33001/svn/!svn/ver/3363/mgould/string/test_length.cpp
+END
+test_justify_string.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/courses/cs33001/svn/!svn/ver/2804/mgould/string/test_justify_string.cpp
+END
+test_find_t_n_blank.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/courses/cs33001/svn/!svn/ver/2804/mgould/string/test_find_t_n_blank.cpp
+END
+test_add.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/courses/cs33001/svn/!svn/ver/3187/mgould/string/test_add.cpp
+END

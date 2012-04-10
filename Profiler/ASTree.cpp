@@ -1,0 +1,303 @@
+/*
+ *  ASTree.cpp
+ *  Abstract Syntax Tree
+ *
+ *  Created by Jonathan Maletic on 11/8/11.
+ *  Copyright 2012 Kent State University. All rights reserved.
+ *
+ *  Modified by:
+ *  Michael Gould
+ */
+
+#include "ASTree.hpp"
+
+/////////////////////////////////////////////////////////////////////
+// Destructor for srcML
+//
+srcML::~srcML() {
+    
+  //By MG
+  //clean up memory
+  delete [] tree;
+}
+
+
+/////////////////////////////////////////////////////////////////////
+// Copy constructor for srcML
+//
+srcML::srcML(const srcML& actual) {
+    
+  //By MG
+  //initialize size
+  CAP=actual.CAP;
+  //initialize string
+  tree=new char[CAP];
+  //loop actual's elements over to a new string
+  for(int i = 0;i<CAP;++i)
+    //copying
+    tree[i]=actual.tree[i];
+  //while not null
+  tree[CAP]='\n';
+  //end of constructor
+}
+
+/////////////////////////////////////////////////////////////////////
+// Constant time swap for srcML
+//
+void srcML::swap(srcML& b) {
+    
+  //By MG
+  //initialize string
+  char *blah=tree;
+  //copy
+  tree=b.tree;
+  //assign
+  b.tree=blah;
+  //initialize varible
+  int blahsize;
+  //assign
+  blahsize=CAP;
+  //create new size
+  CAP=b.CAP;
+  //assign
+  b.CAP=blahsize;
+  //end of method
+    
+}
+
+/////////////////////////////////////////////////////////////////////
+// Assignment for srcML
+//
+srcML& srcML::operator=(srcML rhs) {
+    
+  //By MG
+  //use swap method
+  swap(rhs)
+  //return
+  return *this;
+  //end of assignment operator
+}
+
+/////////////////////////////////////////////////////////////////////
+// Reads in and constructs a srcML object.
+//
+std::istream& operator>>(std::istream& in, srcML& src){
+    char ch;
+    if (!in.eof()) in >> ch;
+    src.header = readUntil(in, '>');
+    if (!in.eof()) in >> ch;
+    src.tree = new ASTree(category, readUntil(in, '>'));
+    src.tree->read(in);
+    return in;
+}
+
+
+/////////////////////////////////////////////////////////////////////
+// Prints out a srcML object
+//
+std::ostream& operator<<(std::ostream& out, const srcML& src){
+    if (TAGS) out << "<" << src.header << ">" << std::endl;
+    src.tree->print(out, 0);
+    return out;
+}
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+// Destructor for ASTree
+//
+ASTree::~ASTree() {
+    
+  //By MG                                                         
+  //clean up memory                                                                                                              
+  delete [] tag;
+
+}
+
+
+/////////////////////////////////////////////////////////////////////
+// Constructs a category, token, or whitespace node for the tree.
+//
+ASTree::ASTree(nodes t, const std::string& s) {
+    nodeType = t;
+    switch (nodeType) {
+        case category:
+            tag = s;
+            break;
+        case token:
+            text = unEscape(s);
+            break;
+        case whitespace:
+            text = s;
+            break;
+    }
+}
+
+
+/////////////////////////////////////////////////////////////////////
+// Copy Constructor for ASTree
+//
+ASTree::ASTree(const ASTree& actual) {
+    
+    //Need to Implement.
+
+}
+
+/////////////////////////////////////////////////////////////////////
+// Constant time swap for ASTree
+//
+void ASTree::swap(ASTree& b) {
+    
+    //Need to Implement.
+    
+}
+
+/////////////////////////////////////////////////////////////////////
+// Assignment for ASTree
+//
+ASTree& ASTree::operator=(ASTree rhs) {
+    
+    //Need to Implement.
+    
+    return *this;
+    
+}
+
+
+
+/////////////////////////////////////////////////////////////////////
+// Read in and construct ASTree
+// REQUIRES: '>' was previous charater read 
+//           && this == new ASTree(category, "TagName")
+//
+//
+std::istream& ASTree::read(std::istream& in) {
+    ASTree *subtree;
+    std::string temp, Lws, Rws;
+    char ch;
+    if (!in.eof()) in.get(ch);
+    while (!in.eof()) {
+        if (ch == '<') {                //Found a tag 
+            temp = readUntil(in, '>');
+            if (temp[0] == '/') {
+                closeTag = temp;
+                break;                  //Found close tag, stop recursion
+            }
+            subtree = new ASTree(category, temp);  //New subtree
+            subtree->read(in);                     //Read it in
+            in.get(ch);
+            child.push_back(subtree);              //Add it to child
+        } else {                       //Found a token
+            temp = std::string(1, ch) + readUntil(in, '<');  //Read it in.
+            std::vector<std::string> tokenList = tokenize(temp);
+            for (std::vector<std::string>::const_iterator i = tokenList.begin(); i != tokenList.end(); ++i){
+                if (isspace((*i)[0])) 
+                    subtree = new ASTree(whitespace, *i);
+                else
+                    subtree = new ASTree(token, *i);
+                child.push_back(subtree);
+            }
+            ch = '<';
+        }
+    }
+    return in;
+}
+
+
+/////////////////////////////////////////////////////////////////////
+// Print an ASTree 
+// REQUIRES: indent >= 0
+//
+std::ostream& ASTree::print(std::ostream& out, int indent) const {
+    if (TAGS) out << std::setw(indent) << " ";
+    if (TAGS) out << "<" << tag << ">" << std::endl; 
+    for (std::vector<ASTree*>::const_iterator i = child.begin(); i != child.end(); ++i) {
+        switch ((*i)->nodeType) {
+            case category:
+                (*i)->print(out, indent + 4);
+                break;
+            case token:
+                //out << std::setw(indent) << " ";
+                out << (*i)->text; // << std::endl;
+                break;
+            case whitespace:
+                out << (*i)->text;
+                break;
+        }
+    }
+    if (TAGS) out << std::setw(indent) << " ";
+    if (TAGS) out << "<" << closeTag << ">" << std::endl;
+    return out;
+}
+
+    
+    
+    
+
+/////////////////////////////////////////////////////////////////////
+// Utilities
+//
+
+/////////////////////////////////////////////////////////////////////
+// Reads until a ch is encountered.  Does not include ch.
+// REQUIRES: in.open()
+// ENSURES: RetVal[i] != ch for all i.
+//
+std::string readUntil(std::istream& in, char ch) {
+    char result[256];
+    int i = 0;
+    in.get(result[i]);
+    while (!in.eof() && (result[i] != ch)) {
+        ++i;
+        in.get(result[i]);
+    }
+    result[i] = 0;
+    return std::string(result);
+}
+
+/////////////////////////////////////////////////////////////////////
+// Converts escaped XML charaters back to charater form
+// REQUIRES: s == "&lt;"
+// ENSURES:  RetVal == "<"
+//
+std::string unEscape(std::string s) {
+    unsigned pos = 0;
+    while ((pos = s.find("&gt;")) != s.npos)  s.replace(pos, 4, ">");
+    while ((pos = s.find("&lt;")) != s.npos)  s.replace(pos, 4, "<");
+    while ((pos = s.find("&amp;")) != s.npos) s.replace(pos, 5, "&");
+    return s;
+}
+
+
+/////////////////////////////////////////////////////////////////////
+// Given: s == "   a + c  "
+// RetVal == {"   ", "a", " ", "+", "c", " "}  
+//
+std::vector<std::string> tokenize(const std::string& s) {
+    std::vector<std::string> result;
+    std::string              temp = "";
+    unsigned i = 0;
+    while (i < s.length()) {
+        while (isspace(s[i]) && (i < s.length())) {
+            temp.push_back(s[i]);
+            ++i;
+        }
+        if (temp != "") {
+            result.push_back(temp);
+            temp = "";
+        }
+        while (!isspace(s[i]) && (i < s.length())) {
+            temp.push_back(s[i]);
+            ++i;
+        }
+        if (temp != "") {
+            result.push_back(temp);
+            temp = "";
+        }
+    }
+    return result;
+}
+    
+
